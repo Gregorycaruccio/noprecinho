@@ -1,5 +1,34 @@
 .main-content {
   flex: 1;
   background-color: var(--color-background);
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 180px);
+}
+
+.app-footer {
+  padding: 16px;
+  background-color: var(--color-surface-white);
+  border-top: 1px solid #e4e4e7;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-switch-admin {
+  background-color: #f4f4f5;
+  color: var(--color-text-dark);
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: var(--border-radius-full);
+  border: 1px dashed #a1a1aa;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-switch-admin strong {
+  color: var(--color-primary-red);
+}
+
+.btn-switch-admin:hover {
+  background-color: #e4e4e7;
 }
