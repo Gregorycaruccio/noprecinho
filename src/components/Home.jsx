@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 
-const Home = () => {
+const Home = ({ stores, offers, onSelectStore, onCategoryFilter }) => {
   const categories = [
     { id: 1, name: 'Açougue', emoji: '🥩' },
     { id: 2, name: 'Hortifruti', emoji: '🥬' },
@@ -10,14 +10,14 @@ const Home = () => {
     { id: 5, name: 'Padaria', emoji: '🥖' },
   ];
 
-  const filters = ['Aberto agora', '⭐ Bem avaliados', '💸 Promoções', '📍 Mais perto'];
+  const filters = ['Aberto agora', '⭐ Mais bem avaliados', '💸 Promoções', '📍 Mais perto'];
 
-  const offers = [
-    { id: 1, product: 'Cerveja Brahma 350ml lata', price: 'R$ 2,99', oldPrice: 'R$ 3,49', market: 'Mercado Central', marketColor: '#0055ff', rating: '4.8' },
-    { id: 2, product: 'Contra Filé Friboi (KG)', price: 'R$ 34,90', oldPrice: 'R$ 42,00', market: 'Super Litoral', marketColor: '#ff7700', rating: '4.5' },
-    { id: 3, product: 'Leite Integral Tirol 1L', price: 'R$ 4,59', oldPrice: 'R$ 5,20', market: 'Mercado Central', marketColor: '#0055ff', rating: '4.8' },
-    { id: 4, product: 'Carvão Vegetal 3kg', price: 'R$ 12,90', oldPrice: 'R$ 16,00', market: 'Super Salinas', marketColor: '#28a745', rating: '4.9' },
-  ];
+  const handleWhatsAppContact = (store, offer) => {
+    const message = `Olá! Vi no app No Precinho: gostaria de reservar *${offer.name}* por *R$ ${offer.promoPrice}*. Ainda tem disponível?`;
+    const cleanPhone = store.whatsapp.replace(/\D/g, '');
+    const url = `https://wa.me/55${cleanPhone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
 
   return (
     <div className="home-container">
@@ -25,7 +25,11 @@ const Home = () => {
       <section className="categories-section">
         <div className="categories-list">
           {categories.map(cat => (
-            <div key={cat.id} className="category-item">
+            <div 
+              key={cat.id} 
+              className="category-item"
+              onClick={() => onCategoryFilter && onCategoryFilter(cat.name)}
+            >
               <div className="category-icon">{cat.emoji}</div>
               <span className="category-name">{cat.name}</span>
             </div>
@@ -48,34 +52,104 @@ const Home = () => {
       <section className="banner-section">
         <div className="promo-banner">
           <div className="banner-content">
-            <h3>Sextou com Churrasco! 🍖</h3>
-            <p>Até 30% OFF em carnes e bebidas</p>
-            <button className="banner-btn">Ver ofertas</button>
+            <h3>Sextou com Churrasco em Cidreira! 🍖</h3>
+            <p>Até 30% OFF em carnes e cervejas nos melhores mercados</p>
+            <button className="banner-btn" onClick={() => onCategoryFilter && onCategoryFilter('Açougue')}>
+              Ver ofertas
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Top Offers */}
+      {/* Top Offers Grid */}
       <section className="offers-section">
-        <h2 className="section-title">Precinho da Semana</h2>
+        <div className="section-title-row">
+          <h2 className="section-title">Precinho da Semana</h2>
+          <span className="live-pulse">🔴 Ao vivo</span>
+        </div>
+
         <div className="offers-grid">
-          {offers.map(offer => (
-            <div key={offer.id} className="offer-card">
-              <div className="offer-image-placeholder"></div>
-              <div className="offer-details">
-                
-                <div className="market-info-row">
-                  <span className="market-badge" style={{ backgroundColor: offer.marketColor }}>
-                    {offer.market}
-                  </span>
-                  <span className="market-rating">⭐ {offer.rating}</span>
+          {offers.map(offer => {
+            const store = stores.find(s => s.id === offer.storeId) || stores[0];
+            return (
+              <div key={offer.id} className="offer-card">
+                <div className="offer-image-box">
+                  <img src={offer.photoUrl} alt={offer.name} className="offer-real-img" />
+                  {offer.validityLabel && (
+                    <span className="validity-badge-home">⏰ {offer.validityLabel}</span>
+                  )}
                 </div>
-                
-                <h4 className="product-name">{offer.product}</h4>
-                <div className="price-row">
-                  <span className="old-price">{offer.oldPrice}</span>
-                  <span className="new-price">{offer.price}</span>
+
+                <div className="offer-details">
+                  <div 
+                    className="market-info-row clickable"
+                    onClick={() => onSelectStore(store.id)}
+                    title="Clique para ver o perfil completo deste mercado"
+                  >
+                    <span className="market-badge" style={{ backgroundColor: store.color }}>
+                      {store.name}
+                    </span>
+                    <span className="market-rating">⭐ {store.ratings.app.score}</span>
+                  </div>
+                  
+                  <h4 className="product-name">{offer.name}</h4>
+                  
+                  <div className="price-row">
+                    {offer.originalPrice && offer.originalPrice !== offer.promoPrice && (
+                      <span className="old-price">R$ {offer.originalPrice}</span>
+                    )}
+                    <span className="new-price">R$ {offer.promoPrice}</span>
+                  </div>
+
+                  <div className="offer-card-actions">
+                    <button 
+                      className="btn-reserve-quick"
+                      onClick={() => handleWhatsAppContact(store, offer)}
+                      title="Reservar oferta no WhatsApp do mercado"
+                    >
+                      💬 WhatsApp
+                    </button>
+                    <button 
+                      className="btn-view-store"
+                      onClick={() => onSelectStore(store.id)}
+                    >
+                      Ver Loja →
+                    </button>
+                  </div>
                 </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Stores Showcase: Mercados Parceiros com Notas do Google e App */}
+      <section className="stores-showcase-section">
+        <h2 className="section-title">Mercados e Açougues Parceiros</h2>
+        <p className="section-subtitle">Toque para ver perfil, fotos do encarte e avaliações do Google</p>
+
+        <div className="stores-horizontal-list">
+          {stores.map(store => (
+            <div 
+              key={store.id} 
+              className="store-showcase-card"
+              onClick={() => onSelectStore(store.id)}
+            >
+              <div className="store-card-header" style={{ backgroundImage: `url(${store.coverImage})` }}>
+                <span className="store-card-logo">{store.logo}</span>
+              </div>
+              <div className="store-card-body">
+                <h4>{store.name}</h4>
+                <p className="store-card-neighborhood">📍 {store.neighborhood} • Cidreira</p>
+                
+                <div className="store-card-ratings">
+                  <span className="rating-pill app">📱 {store.ratings.app.score}</span>
+                  <span className="rating-pill google">🌐 Google: {store.ratings.google.score}</span>
+                </div>
+
+                {store.flyerUrl && (
+                  <span className="badge-has-flyer">📰 Encarte Disponível</span>
+                )}
               </div>
             </div>
           ))}
