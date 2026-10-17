@@ -11,6 +11,7 @@ import { initialStores, initialOffers } from './data/mockData';
 function App() {
   const [stores, setStores] = useState(initialStores);
   const [offers, setOffers] = useState(initialOffers);
+  const [selectedNeighborhood, setSelectedNeighborhood] = useState('Toda a cidade (Cidreira)');
   
   // Views: 'home' | 'search' | 'store_profile' | 'login' | 'admin'
   const [currentView, setCurrentView] = useState('home');
@@ -81,6 +82,17 @@ function App() {
     }
   };
 
+  // Filtering by neighborhood
+  const filteredStores = selectedNeighborhood === 'Toda a cidade (Cidreira)'
+    ? stores
+    : stores.filter(s => s.neighborhood.toLowerCase().includes(selectedNeighborhood.toLowerCase()));
+
+  const filteredStoreIds = new Set(filteredStores.map(s => s.id));
+
+  const filteredOffers = selectedNeighborhood === 'Toda a cidade (Cidreira)'
+    ? offers
+    : offers.filter(o => filteredStoreIds.has(o.storeId));
+
   const currentViewingStore = stores.find(s => s.id === selectedStoreId) || stores[0];
 
   return (
@@ -113,14 +125,16 @@ function App() {
           <Header 
             onSearch={handleSearch} 
             onGoHome={handleGoHome} 
-            currentQuery={searchQuery} 
+            currentQuery={searchQuery}
+            selectedLocation={selectedNeighborhood}
+            onSelectLocation={setSelectedNeighborhood}
           />
           
           <main className="main-content">
             {currentView === 'home' && (
               <Home 
-                stores={stores} 
-                offers={offers} 
+                stores={filteredStores} 
+                offers={filteredOffers} 
                 onSelectStore={handleSelectStore}
                 onCategoryFilter={(cat) => handleSearch(cat)}
               />
@@ -130,7 +144,7 @@ function App() {
               <Search 
                 query={searchQuery} 
                 stores={stores} 
-                offers={offers}
+                offers={filteredOffers}
                 onSelectStore={handleSelectStore}
               />
             )}

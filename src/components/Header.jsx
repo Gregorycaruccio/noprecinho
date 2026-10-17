@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './Header.css';
 
-const Header = ({ onSearch, onGoHome, currentQuery }) => {
+const Header = ({ onSearch, onGoHome, currentQuery, selectedLocation, onSelectLocation }) => {
   const [isLocationOpen, setIsLocationOpen] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState('Toda a cidade (Cidreira)');
 
   const locations = [
     'Toda a cidade (Cidreira)',
@@ -19,7 +18,7 @@ const Header = ({ onSearch, onGoHome, currentQuery }) => {
       <div className="location-bar">
         <span className="location-label">📍 Procurando preços em</span>
         <div className="location-selector" onClick={() => setIsLocationOpen(!isLocationOpen)}>
-          <strong>{selectedLocation}</strong>
+          <strong>{selectedLocation || 'Toda a cidade (Cidreira)'}</strong>
           <span className="chevron">{isLocationOpen ? '▲' : '▼'}</span>
         </div>
 
@@ -28,9 +27,9 @@ const Header = ({ onSearch, onGoHome, currentQuery }) => {
             {locations.map(loc => (
               <div 
                 key={loc} 
-                className={`location-option ${selectedLocation === loc ? 'active' : ''}`}
+                className={`location-option ${(selectedLocation || 'Toda a cidade (Cidreira)') === loc ? 'active' : ''}`}
                 onClick={() => {
-                  setSelectedLocation(loc);
+                  onSelectLocation(loc);
                   setIsLocationOpen(false);
                 }}
               >
