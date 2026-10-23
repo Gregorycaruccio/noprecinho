@@ -1,10 +1,10 @@
 export const initialStores = [
-  // 1. NAZARÉ
+  // 1. CENTRO
   {
     id: 'acougue-do-gaucho',
     name: 'Açougue do Gaúcho',
-    neighborhood: 'Nazaré',
-    address: 'Av. Fausto Borba Prates, 3880 - Nazaré / Centro, Cidreira',
+    neighborhood: 'Centro',
+    address: 'Av. Fausto Borba Prates, 3880 - Centro, Cidreira',
     hours: 'Seg a Sáb: 08:00 às 20:00 • Dom: 08:00 às 13:00',
     whatsapp: '51994221111',
     color: '#b91c1c',
@@ -19,12 +19,10 @@ export const initialStores = [
     reviews: [
       { id: 1, author: 'Lucas Martins (Cidreira)', source: 'app', rating: 5, date: 'Ontem', text: 'A Quarta da Gauchada tem o melhor preço de carne do litoral! A costela minga e o vazio são diferenciados.' },
       { id: 2, author: 'Rodrigo Becker', source: 'google', rating: 5, date: 'Há 3 dias', text: 'Atendimento nota 10 e a tele-entrega pelo WhatsApp é muito rápida. Tradição pura.' },
-      { id: 3, author: 'Juliana P. (Nazaré)', source: 'app', rating: 5, date: 'Há 1 semana', text: 'Carnes sempre frescas, limpas e no preço justo. Recomendo de olhos fechados!' }
+      { id: 3, author: 'Juliana P. (Centro)', source: 'app', rating: 5, date: 'Há 1 semana', text: 'Carnes sempre frescas, limpas e no preço justo. Recomendo de olhos fechados!' }
     ],
     flyerUrl: './acougue-gaucho-tabloide.jpg'
   },
-
-  // 2. CENTRO
   {
     id: 'asun-cidreira',
     name: 'Asun Supermercados',
@@ -87,29 +85,28 @@ export const initialStores = [
     flyerUrl: null
   },
 
-  // 3. SALINAS
+  // 2. COSTA DO SOL
   {
-    id: 'mercado-santos-salinas',
-    name: 'Mercado Santos',
-    neighborhood: 'Salinas',
-    address: 'Rua Nilton Teixeira, 420 - Salinas, Cidreira',
-    hours: 'Seg a Dom: 08:00 às 20:30',
-    whatsapp: '51984567890',
-    color: '#16a34a',
-    coverImage: 'https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=800&auto=format&fit=crop&q=80',
-    logo: '🏖️',
-    login: { user: 'santos', pass: '123' },
+    id: 'supermercado-litoral',
+    name: 'Supermercado Litoral',
+    neighborhood: 'Costa do Sol',
+    address: 'Av. Fausto Borba Prates, 5800 - Costa do Sol, Cidreira',
+    hours: 'Todos os dias: 08:00 às 21:30',
+    whatsapp: '51988887777',
+    color: '#ff7700',
+    coverImage: 'https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=800&auto=format&fit=crop&q=80',
+    logo: '🌊',
+    login: { user: 'litoral', pass: '123' },
     ratings: {
-      app: { score: 4.8, count: 51 },
-      google: { score: 4.6, count: 98, url: 'https://maps.google.com' }
+      app: { score: 4.7, count: 54 },
+      google: { score: 4.5, count: 168, url: 'https://maps.google.com' }
     },
     reviews: [
-      { id: 1, author: 'Marcos Veranista', source: 'app', rating: 5, date: 'Ontem', text: 'Salva os churrascos em Salinas! Bebidas sempre geladas e carvão na mão.' }
+      { id: 1, author: 'Letícia P. (Costa do Sol)', source: 'app', rating: 5, date: 'Ontem', text: 'Excelente mercado na Costa do Sol, padaria e açougue completos!' },
+      { id: 2, author: 'Rafael Silveira', source: 'google', rating: 4, date: 'Há 5 dias', text: 'Muito prático para quem está na praia da Costa do Sol, bebidas sempre geladas.' }
     ],
     flyerUrl: null
   },
-
-  // 4. COSTA DO SOL
   {
     id: 'mercado-wolf-costadosol',
     name: 'Mercado Wolf',
@@ -131,7 +128,27 @@ export const initialStores = [
     flyerUrl: null
   },
 
-  // 5. PARQUE DOS PINOS
+  // 3. PARQUE DOS PINOS
+  {
+    id: 'mercado-dunas-parquedospinos',
+    name: 'Mercado Dunas',
+    neighborhood: 'Parque dos Pinos',
+    address: 'Rua das Dunas, 250 - Parque dos Pinos, Cidreira',
+    hours: 'Seg a Dom: 08:00 às 20:30',
+    whatsapp: '51987654321',
+    color: '#f59e0b',
+    coverImage: 'https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=800&auto=format&fit=crop&q=80',
+    logo: '🏖️',
+    login: { user: 'dunas', pass: '123' },
+    ratings: {
+      app: { score: 4.8, count: 38 },
+      google: { score: 4.6, count: 82, url: 'https://maps.google.com' }
+    },
+    reviews: [
+      { id: 1, author: 'Eduardo M. (Parque dos Pinos)', source: 'app', rating: 5, date: 'Ontem', text: 'Melhor opção do Parque dos Pinos! Carnes e carvão pro churrasco sempre no jeito.' }
+    ],
+    flyerUrl: null
+  },
   {
     id: 'mercado-ju-parquedospinos',
     name: 'Mercado Jú',
@@ -151,11 +168,55 @@ export const initialStores = [
       { id: 1, author: 'Tatiana Rocha', source: 'app', rating: 5, date: 'Ontem', text: 'Atendimento muito carinhoso da dona Jú, pão francês sempre quentinho.' }
     ],
     flyerUrl: null
+  },
+
+  // 4. SALINAS
+  {
+    id: 'mercado-santos-salinas',
+    name: 'Mercado Santos',
+    neighborhood: 'Salinas',
+    address: 'Rua Nilton Teixeira, 420 - Salinas, Cidreira',
+    hours: 'Seg a Dom: 08:00 às 20:30',
+    whatsapp: '51984567890',
+    color: '#16a34a',
+    coverImage: 'https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=800&auto=format&fit=crop&q=80',
+    logo: '☀️',
+    login: { user: 'santos', pass: '123' },
+    ratings: {
+      app: { score: 4.8, count: 51 },
+      google: { score: 4.6, count: 98, url: 'https://maps.google.com' }
+    },
+    reviews: [
+      { id: 1, author: 'Marcos Veranista', source: 'app', rating: 5, date: 'Ontem', text: 'Salva os churrascos em Salinas! Bebidas sempre geladas e carvão na mão.' }
+    ],
+    flyerUrl: null
+  },
+
+  // 5. NAZARÉ
+  {
+    id: 'mercado-nazare',
+    name: 'Minimercado Nazaré',
+    neighborhood: 'Nazaré',
+    address: 'Av. Beira Mar, 1420 - Nazaré, Cidreira',
+    hours: 'Todos os dias: 08:00 às 20:00',
+    whatsapp: '51989012345',
+    color: '#0d9488',
+    coverImage: 'https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=800&auto=format&fit=crop&q=80',
+    logo: '⛵',
+    login: { user: 'nazare', pass: '123' },
+    ratings: {
+      app: { score: 4.7, count: 31 },
+      google: { score: 4.5, count: 59, url: 'https://maps.google.com' }
+    },
+    reviews: [
+      { id: 1, author: 'Cristina Dias', source: 'app', rating: 5, date: 'Há 2 dias', text: 'Ótimo atendimento e localização perfeita para quem frequenta a praia de Nazaré.' }
+    ],
+    flyerUrl: null
   }
 ];
 
 export const initialOffers = [
-  // 1. Açougue do Gaúcho (Nazaré) - Quarta da Gauchada
+  // 1. Açougue do Gaúcho (Centro) - Quarta da Gauchada
   {
     id: 101,
     storeId: 'acougue-do-gaucho',
@@ -238,46 +299,70 @@ export const initialOffers = [
     views: 430
   },
 
-  // 4. Mercado Santos (Salinas)
+  // 4. Supermercado Litoral (Costa do Sol)
   {
     id: 401,
-    storeId: 'mercado-santos-salinas',
-    name: 'Carvão Vegetal 3kg',
-    category: 'Outros',
-    originalPrice: '16.00',
-    promoPrice: '12.50',
-    validityLabel: 'Promoção Verão',
-    photoUrl: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=500&auto=format&fit=crop&q=80',
-    views: 380
+    storeId: 'supermercado-litoral',
+    name: 'Costela Minga (KG)',
+    category: 'Açougue',
+    originalPrice: '33.90',
+    promoPrice: '26.90',
+    validityLabel: 'Oferta da Praia',
+    photoUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80',
+    views: 520
   },
   {
     id: 402,
-    storeId: 'mercado-santos-salinas',
-    name: 'Cerveja Skol 350ml lata',
+    storeId: 'supermercado-litoral',
+    name: 'Cerveja Amstel 350ml lata',
     category: 'Bebidas',
-    originalPrice: '3.39',
-    promoPrice: '2.79',
+    originalPrice: '3.69',
+    promoPrice: '2.99',
     validityLabel: 'Válido até domingo',
     photoUrl: 'https://images.unsplash.com/photo-1608270119227-28564f27599c?w=500&auto=format&fit=crop&q=80',
-    views: 290
+    views: 440
   },
 
   // 5. Mercado Wolf (Costa do Sol)
   {
     id: 501,
     storeId: 'mercado-wolf-costadosol',
-    name: 'Costela Bovina Tradicional (KG)',
-    category: 'Açougue',
-    originalPrice: '33.90',
-    promoPrice: '28.90',
+    name: 'Carvão Vegetal 3kg',
+    category: 'Outros',
+    originalPrice: '15.90',
+    promoPrice: '12.90',
     validityLabel: 'Até durar o estoque',
-    photoUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80',
-    views: 260
+    photoUrl: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=500&auto=format&fit=crop&q=80',
+    views: 310
   },
 
-  // 6. Mercado Jú (Parque dos Pinos)
+  // 6. Mercado Dunas (Parque dos Pinos)
   {
     id: 601,
+    storeId: 'mercado-dunas-parquedospinos',
+    name: 'Costela Bovina Tradicional (KG)',
+    category: 'Açougue',
+    originalPrice: '32.90',
+    promoPrice: '26.50',
+    validityLabel: 'Fim de Semana no Parque',
+    photoUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80',
+    views: 340
+  },
+  {
+    id: 602,
+    storeId: 'mercado-dunas-parquedospinos',
+    name: 'Carvão Vegetal 3kg',
+    category: 'Outros',
+    originalPrice: '16.00',
+    promoPrice: '12.00',
+    validityLabel: 'Promoção Churrasco',
+    photoUrl: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=500&auto=format&fit=crop&q=80',
+    views: 290
+  },
+
+  // 7. Mercado Jú (Parque dos Pinos)
+  {
+    id: 701,
     storeId: 'mercado-ju-parquedospinos',
     name: 'Pão Francês Fresquinho (KG)',
     category: 'Padaria',
@@ -286,5 +371,31 @@ export const initialOffers = [
     validityLabel: 'Toda manhã',
     photoUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=80',
     views: 195
+  },
+
+  // 8. Mercado Santos (Salinas)
+  {
+    id: 801,
+    storeId: 'mercado-santos-salinas',
+    name: 'Cerveja Skol 350ml lata',
+    category: 'Bebidas',
+    originalPrice: '3.39',
+    promoPrice: '2.79',
+    validityLabel: 'Válido até domingo',
+    photoUrl: 'https://images.unsplash.com/photo-1608270119227-28564f27599c?w=500&auto=format&fit=crop&q=80',
+    views: 410
+  },
+
+  // 9. Minimercado Nazaré (Nazaré)
+  {
+    id: 901,
+    storeId: 'mercado-nazare',
+    name: 'Gelo em Cubos 5kg',
+    category: 'Bebidas',
+    originalPrice: '15.00',
+    promoPrice: '11.90',
+    validityLabel: 'Fim de semana',
+    photoUrl: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80',
+    views: 220
   }
 ];
