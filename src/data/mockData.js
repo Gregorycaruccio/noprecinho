@@ -1,6 +1,27 @@
 export const initialStores = [
   // 1. CENTRO
   {
+    id: 'fruteira-pegue-e-pese',
+    name: 'Fruteira Pegue e Pese',
+    neighborhood: 'Centro',
+    address: 'Av. Fausto Borba Prates, Centro - Cidreira',
+    hours: 'Seg a Sáb: 08:00 às 20:00 • Dom: 08:00 às 13:00',
+    whatsapp: '51991239876',
+    color: '#16a34a',
+    coverImage: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&auto=format&fit=crop&q=80',
+    logo: '🍉',
+    login: { user: 'peguepese', pass: '123' },
+    ratings: {
+      app: { score: 4.9, count: 45 },
+      google: { score: 4.7, count: 115, url: 'https://maps.google.com' }
+    },
+    reviews: [
+      { id: 1, author: 'Sônia Maria (Centro)', source: 'app', rating: 5, date: 'Ontem', text: 'Melhor fruteira de Cidreira! Frutas docinhas e verduras sempre frescas.' },
+      { id: 2, author: 'Guilherme Rosa', source: 'google', rating: 5, date: 'Há 4 dias', text: 'Preço ótimo de melancia, banana e tomate. Recomendo muito.' }
+    ],
+    flyerUrl: null
+  },
+  {
     id: 'acougue-do-gaucho',
     name: 'Açougue do Gaúcho',
     neighborhood: 'Centro',
@@ -216,7 +237,42 @@ export const initialStores = [
 ];
 
 export const initialOffers = [
-  // 1. Açougue do Gaúcho (Centro) - Quarta da Gauchada
+  // 1. Fruteira Pegue e Pese (Centro) - Hortifruti
+  {
+    id: 51,
+    storeId: 'fruteira-pegue-e-pese',
+    name: 'Banana Prata Selecionada (KG)',
+    category: 'Hortifruti',
+    originalPrice: '5.90',
+    promoPrice: '3.99',
+    validityLabel: '🥬 Fresquinho da Semana',
+    photoUrl: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80',
+    views: 680
+  },
+  {
+    id: 52,
+    storeId: 'fruteira-pegue-e-pese',
+    name: 'Tomate Gaúcho Longa Vida (KG)',
+    category: 'Hortifruti',
+    originalPrice: '7.50',
+    promoPrice: '4.99',
+    validityLabel: '🔥 Oferta do Dia',
+    photoUrl: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=80',
+    views: 890
+  },
+  {
+    id: 53,
+    storeId: 'fruteira-pegue-e-pese',
+    name: 'Melancia Inteira Doce (KG)',
+    category: 'Hortifruti',
+    originalPrice: '2.99',
+    promoPrice: '1.89',
+    validityLabel: '🍉 Especial Verão',
+    photoUrl: 'https://images.unsplash.com/photo-1589984662646-e7b2e495949c?w=500&auto=format&fit=crop&q=80',
+    views: 740
+  },
+
+  // 2. Açougue do Gaúcho (Centro) - Quarta da Gauchada
   {
     id: 101,
     storeId: 'acougue-do-gaucho',
@@ -262,7 +318,7 @@ export const initialOffers = [
     views: 890
   },
 
-  // 2. Asun Supermercados (Centro)
+  // 3. Asun Supermercados (Centro)
   {
     id: 201,
     storeId: 'asun-cidreira',
@@ -286,7 +342,7 @@ export const initialOffers = [
     views: 640
   },
 
-  // 3. Nunes Supermercado (Centro)
+  // 4. Nunes Supermercado (Centro)
   {
     id: 301,
     storeId: 'nunes-supermercado',
@@ -299,7 +355,7 @@ export const initialOffers = [
     views: 430
   },
 
-  // 4. Supermercado Litoral (Costa do Sol)
+  // 5. Supermercado Litoral (Costa do Sol)
   {
     id: 401,
     storeId: 'supermercado-litoral',
@@ -323,7 +379,7 @@ export const initialOffers = [
     views: 440
   },
 
-  // 5. Mercado Wolf (Costa do Sol)
+  // 6. Mercado Wolf (Costa do Sol)
   {
     id: 501,
     storeId: 'mercado-wolf-costadosol',
@@ -336,7 +392,7 @@ export const initialOffers = [
     views: 310
   },
 
-  // 6. Mercado Dunas (Parque dos Pinos)
+  // 7. Mercado Dunas (Parque dos Pinos)
   {
     id: 601,
     storeId: 'mercado-dunas-parquedospinos',
@@ -360,7 +416,7 @@ export const initialOffers = [
     views: 290
   },
 
-  // 7. Mercado Jú (Parque dos Pinos)
+  // 8. Mercado Jú (Parque dos Pinos)
   {
     id: 701,
     storeId: 'mercado-ju-parquedospinos',
@@ -373,7 +429,7 @@ export const initialOffers = [
     views: 195
   },
 
-  // 8. Mercado Santos (Salinas)
+  // 9. Mercado Santos (Salinas)
   {
     id: 801,
     storeId: 'mercado-santos-salinas',
@@ -386,7 +442,7 @@ export const initialOffers = [
     views: 410
   },
 
-  // 9. Minimercado Nazaré (Nazaré)
+  // 10. Minimercado Nazaré (Nazaré)
   {
     id: 901,
     storeId: 'mercado-nazare',
